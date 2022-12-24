@@ -1,0 +1,77 @@
+Chapter 01 - Inception
+
+Theory -
+● What is Emmet?
+● Difference between a Library and Framework?
+● What is CDN? Why do we use it?
+● Why is React known as React?
+● What is crossorigin in script tag?
+● What is diference between React and ReactDOM
+● What is difference between react.development.js and react.production.js files via CDN?
+● What is async and defer? - see my Youtube video ;)
+
+Coding -
+● Set up all the tools in your laptop
+○ VS Code
+○ Chrome
+○ Extensions of Chrome
+● Create a new Git repo
+● Build your first Hello World program using,
+○ Using just HTML
+○ Using JS to manipulate the DOM
+○ Using React
+■ use CDN Links
+■ Create an Element
+■ Create nested React Elements
+■ Use root.render
+● Push code to Github (Theory as well as code)
+● Learn about Arrow Functions before the next class
+
+
+References:
+- https://beta.reactjs.org/apis/react/createElement
+- https://www.youtube.com/watch?v=IrHmpdORLu8
+
+What is Emmet?
+Emmet is a web-developer’s toolkit that can greatly improve your HTML & CSS workflow.
+you can type CSS-like expressions that can be dynamically parsed, and produce output depending on what you type in the abbreviation. Emmet is developed and optimised for web-developers whose workflow depends on HTML/XML and CSS, but can be used with programming languages too.
+
+Difference between a Library and Framework?
+library and the Framework are reusable pieces of code written by developers to solve complicated problems.
+“Inversion of Control” (IoC) describes the difference between a library and a framework. In some ways, you can think of a framework as a collection of libraries, but it’s entirely different. By using a library, you control the flow of the program. The library can be invoked whenever and wherever you like. Contrary to this, when you use a framework, the flow is controlled by the framework. The framework instructs you where to put your code, but it will call your code as required. Simply put, our code calls the library’s code, but in a framework, it’s the framework’s code that calls our code as shown in the below diagram.
+https://www.interviewbit.com/blog/framework-vs-library/
+
+  What is CDN? Why do we use it?
+   A content delivery network (CDN) is a group of geographically distributed servers that speed up the delivery of web content by bringing it closer to where users are. Data centers across the globe use caching, a process that temporarily stores copies of files, so that you can access internet content from a web-enabled device or browser more quickly through a server near you. CDNs cache content like web pages, images, and video in proxy servers near to your physical location.
+   https://www.akamai.com/our-thinking/cdn/what-is-a-cdn
+   Youtube:gaurav sen
+
+
+
+ Why is React known as React?
+ React was developed for applications (Facebook) that have constantly changing data. Since React is a front-end framework or the “View” in MVC, this means that as the user clicks around and changes the app’s data, the view should “react” or change with those user events. User events being mouse clicks, typing, submitting a form.
+
+
+ What is crossorigin in script tag?
+ The crossorigin attribute sets the mode of the request to an HTTP CORS Request. Web pages often make requests to load resources on other servers. Here is where CORS comes in. A cross-origin request is a request for a resource (e.g. style sheets, iframes, images, fonts, or scripts) from another domain.
+
+
+ What is diference between React and ReactDOM
+ React library is responsible for creating views and ReactDOM library is responsible to actually render UI in the browser.
+
+
+ What is difference between react.development.js and react.production.js files via CDN?
+ The very basic difference is that Production Build has ugly, minified(compressed) version of your javascript code, so this makes rendering of file on end user's browser very quick and performance enhancing.
+ so rendering development build js files on UI will take a lot of a time as compared to production version which is very crisp, compact, compressed, uglified for better user experience and loading on UI.
+
+
+
+ What is async and defer?
+  async:html parsing will be going on asynchronously scripts are fetched, then scripts are executed and html parsing is continued.
+  defer:html parsing will be going on scripts will be fetched parallelly and once the html parsing  is completed, then scripts are executed.
+  when to use what: async doesn't maintain the order of execution of scripts. defer maintains the order of execution of scripts. when scripts are inter-dependent on each other do not use async/better to use defer.
+  YT:akshay saini
+
+
+
+
