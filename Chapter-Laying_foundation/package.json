@@ -1,0 +1,18 @@
+{
+  "name": "chapter-laying_foundation",
+  "version": "1.0.0",
+  "description": "lecture 3 laying foundation",
+  
+  "scripts": {
+     "start":"parcel index.html",
+     "build":"parcel build index.html",
+    "test": "jest"
+  },
+  "author": "HP",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.8.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
