@@ -52,6 +52,6 @@ const container = React.createElement(
   },
   [heading, para]
 );
-
+console.log(container);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(container);
