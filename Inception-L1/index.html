@@ -1,52 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Namaste React</title>
-</head>
-<body>
-  <div id="root">
-</div>
-<!-- <script>
+  </head>
+  <body>
+    <div id="root">Not rendered</div>
+    <!-- <script>
     const heading=document.createElement("h1");
     heading.innerHTML= "Namaste everyone"
 
     document.getElementById("root").appendChild(heading);
 </script> -->
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script> -->
 
-
-<script>
-
-const heading= React.createElement("h2",{
-        id:"title",
-        className:"title",
-        style:{backgroundColor:"gold",borderRadius:"2rem",textAlign:"center"}
-    },"Namaste")
-const para= React.createElement("p",{
-        id:"para",
-        className:"para",
-        style:{backgroundColor:"orange",textAlign:"center"}
-    },"ipsum dolor sit amet consectetur adipisicing elit. Maiores maxime illum possimus rem dolores nemo esse, molestias sunt cupiditate? Perferendis, sint illum doloribus adipisci iste quisquam fuga officia! Veritatis, eum"
-)
-const input= React.createElement("input",{
-        id:"input",
-        className:"input",
-        
-    }
-)
-const container=React.createElement("div",{
-    id:"container",
-    class:"container",
-},[heading,para,input])
-    
-   const root=ReactDOM.createRoot(document.getElementById("root"));
-    root.render(container);
-</script>
-    
-</body>
+    <script type="module" src="App.js"></script>
+  </body>
 </html>
