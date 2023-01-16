@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    
+}
+body{
+    
+    font-family: 'Work Sans', sans-serif;
+
+}
+.description{
+    text-align: center;
+    font-family: 'Marck Script', cursive;;
+    margin:10px;
+
+}
+.tag{
+    color: brown;
+}
+.feast{
+    font-size: 2rem;
+    color:rgb(230, 167, 9);
+}
+
+.header{
+    color: brown;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding:20px;
+    height: 80px;
+    box-shadow: 0 0 10px 0 black;
+
+}
+
+.nav-links{
+   
+    list-style: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap:1rem;
+    
+}
+
+.nav-link {
+    cursor: pointer;
+    height: 100%;
+    position: relative;
+}
+
+.nav-link:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    border-radius: 10px;
+    display: block;
+    background-color: goldenrod;
+    width: 100%;
+    height: 5px;
+}
+.logo{
+            width: 150px;
+}
+
+.nav-items a{
+    font-weight: bold;
+}
+a{
+    text-decoration: none;
+   color: brown;
+ 
+}
+
+
+.section {
+    height: 230px;
+    width: 100%;
+    margin: 0px 0 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.507);
+    position: relative;
+}
+
+.section .sectionImage {
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+    filter: blur(4);
+}
+
+
+.search{
+   position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
+    display: flex;
+  
+}
+.search-bar {
+
+    border: 2px solid brown;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: inherit;
+    color: brown;
+   width: 60vh;
+}
+.search-bar:focus{
+    outline: 0;
+}
+.cart{
+ background-color: goldenrod;
+ color: brown;
+ border-radius: 50%;
+ padding: 4px;
+}
+.search-button {
+    padding: 12px;
+    border-radius: 8px;
+    background-color: brown;
+    color: white;
+    font-family: inherit;
+    border: none;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.restuarant-card{
+    margin:10px;
+    width:300px;
+    padding:10px;
+    
+    font-size: 0.8rem;
+    
+}
+.restuarant-card:hover{
+    box-shadow: 0 0 10px 0 black;
+}
+.restuarant-image{
+    width:100%;
+    
+    object-fit: cover;
+}
+.restuarant-list{
+    margin:100px auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.rating{
+    color: white;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:2px;
+   
+    
+
+}
+.order{
+    
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+       
+}
+.order-button{
+    
+    font-family: inherit;
+    padding:8px;
+    background-color: brown;
+    color: white;
+    border:none;
+    width: 100%;
+    border-radius: 6px;
+    margin-top:10px;
+}
+.rest-name{
+    margin: 10px 0;
+}
+.badRating{
+   background-color: red; 
+   border-radius: 10px;
+}
+.goodRating{
+    background-color: rgb(24, 134, 24);
+    border-radius: 10px;
+}
+@media screen  and (max-width:768px) {
+    .mobile{
+        display: none;
+    }
+    .search-bar{
+        width: 300px;
+    }
+    .header{
+        justify-content: space-between;
+    }
+    
+}
+
