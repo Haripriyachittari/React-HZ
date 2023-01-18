@@ -30,7 +30,7 @@ body{
     color: brown;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     padding:20px;
     height: 80px;
     box-shadow: 0 0 10px 0 black;
@@ -59,7 +59,7 @@ body{
     bottom: -12px;
     border-radius: 10px;
     display: block;
-    background-color: goldenrod;
+    background-color: rgb(124, 9, 9);
     width: 100%;
     height: 5px;
 }
@@ -69,39 +69,30 @@ body{
 
 .nav-items a{
     font-weight: bold;
-}
-a{
     text-decoration: none;
-   color: brown;
- 
+        color: brown;
 }
+
 
 
 .section {
-    height: 230px;
+    height: 330px;
     width: 100%;
     margin: 0px 0 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.507);
-    position: relative;
+   
+    background-color: brown;
+   
 }
 
-.section .sectionImage {
-    height: 100%;
+
+
+.searchbanner{
     width: 100%;
-    object-position: center;
-    object-fit: cover;
-    filter: blur(4);
-}
-
-
-.search{
-   position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%);
     display: flex;
-  
+    justify-content: space-around;
+    align-items: center;
 }
+
 .search-bar {
 
     border: 2px solid brown;
@@ -109,16 +100,15 @@ a{
     border-radius: 8px;
     font-family: inherit;
     color: brown;
-   width: 60vh;
+    width: 40vh;
+   
+}
+.input{
+    display: flex;
+
 }
 .search-bar:focus{
     outline: 0;
-}
-.cart{
- background-color: goldenrod;
- color: brown;
- border-radius: 50%;
- padding: 4px;
 }
 .search-button {
     padding: 12px;
@@ -130,17 +120,101 @@ a{
     margin-left: 5px;
     cursor: pointer;
 }
+.cart{
+ background-color: goldenrod;
+ color: brown;
+ border-radius: 50%;
+ padding: 4px;
+}
+
+
+.shimmerCard{
+    
+            margin: 10px;
+            width: 300px;
+            padding: 10px;
+            
+            height: 320px;
+        }
+  .shimmerImage{
+    width: 280px;
+    height: 176px;
+    background-color: rgb(201, 201, 201);
+    margin:10px 0 5px;
+  }     
+  .shimmerTitle{
+    width:200px;
+    height: 20px;
+    background-color: rgb(201, 201, 201);
+  } 
+  .shimmerSubTitle {
+      width: 280px;
+      height: 10px;
+      background-color: rgb(201, 201, 201);
+      margin: 5px 0;
+  }
+  .shimmerRating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6px 0;
+  }
+  .shimmerRatebit{
+    width: 50px;
+    height: 15px;
+    background-color: rgb(201, 201, 201);
+  }
+  .shimmerOrder{
+    width: 280px;
+    height: 35px;
+    background-color: rgb(201, 201, 201);
+    border-radius: 4px;
+  }
+  .shimmerList{
+   
+            margin: 10px auto;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        
+  }
+  .notfoundImage{
+    width: 300px;
+    margin: 20px;
+  }
+  .notFound{
+    
+    display: flex;
+    flex-direction: column;
+  }
+
+  .goback{
+    margin:30px;
+    border: none;
+    padding: 10px;
+    font-family: inherit;
+    background-color: brown;
+   
+  }
+  .goback a{
+    text-decoration: none;
+    color: white;
+  }
 
 .restuarant-card{
     margin:10px;
     width:300px;
     padding:10px;
-    
+    height: 330px;
     font-size: 0.8rem;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 5px;
     
 }
 .restuarant-card:hover{
-    box-shadow: 0 0 10px 0 black;
+    box-shadow: 0 0 4px 0 black;
 }
 .restuarant-image{
     width:100%;
@@ -148,7 +222,7 @@ a{
     object-fit: cover;
 }
 .restuarant-list{
-    margin:100px auto;
+    margin:10px auto;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -183,10 +257,20 @@ a{
     border:none;
     width: 100%;
     border-radius: 6px;
-    margin-top:10px;
+    margin-top:4px;
+}
+.log{
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: brown;
+    color: white;
+    padding:8px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .rest-name{
-    margin: 10px 0;
+    margin: 5px 0 2px;
 }
 .badRating{
    background-color: red; 
@@ -195,6 +279,59 @@ a{
 .goodRating{
     background-color: rgb(24, 134, 24);
     border-radius: 10px;
+}
+.section{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+.section img{
+   width:240px;
+   height:260px;
+   object-fit: cover;
+}
+.footer{
+    width: 100%;
+    height: 300px;
+    background-color: brown;
+    margin: 100px 0 0;
+    color: white;
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.footerSectionOne{
+    display: flex;
+    justify-content: space-between;
+}
+.footerlist {
+    list-style: none;
+}
+.footerlist li{
+    margin: 10px;
+}
+
+.heading{
+    color: rgb(206, 204, 204);
+}
+.footerSectionTwo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid white;
+    padding: 15px;
+}
+.socials{
+    display: flex;
+    gap:2rem;
+}
+.hidden {
+    display: flex;
 }
 @media screen  and (max-width:768px) {
     .mobile{
@@ -206,6 +343,29 @@ a{
     .header{
         justify-content: space-between;
     }
+        .searchbanner {
+            flex-direction: column;
+            gap:2rem;
+        }
+       
     
+        .section{
+            display: none;
+        }
+        .hidden{
+            display: none;
+        }
+        .restuarant-card {
+            
+            width: 300px;
+           
+        }
+            .restuarant-list{
+   
+    width: 100%;
+    
+}
+
+            
 }
 

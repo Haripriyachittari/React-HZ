@@ -21,14 +21,18 @@ const RestuarantCard = ({
         <p>{cuisines.join(",")}</p>
       </div>
       <div className="order">
-        <div className={avgRating > 3 ? "goodRating" : "badRating"}>
-          <h4 className="rating">
-            {avgRating} <AiFillStar />
-          </h4>
-        </div>{" "}
+        {avgRating.includes("--") ? (
+          <p>No Rating</p>
+        ) : (
+          <div className={avgRating > 3 ? "goodRating" : "badRating"}>
+            <h4 className="rating">
+              {avgRating} <AiFillStar />
+            </h4>
+          </div>
+        )}
         • <h4>{slaString}</h4> • <h4>{costForTwoString}</h4>
       </div>
-      <button className="order-button">Order Now</button>
+      <button className="order-button">ORDER NOW</button>
     </div>
   );
 };

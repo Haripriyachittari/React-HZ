@@ -1,4 +1,7 @@
-import { AiOutlineShoppingCart, AiFillStar } from "react-icons/ai";
+import { useState } from "react";
+import { BsFillCartFill } from "react-icons/bs";
+
+import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
 
 const Logo = () => {
   return (
@@ -13,32 +16,39 @@ const Logo = () => {
 };
 
 const Header = () => {
+  const [userLog, setUserLog] = useState(false);
+
+  const handleLog = () => {
+    setUserLog(!userLog);
+  };
   return (
     <div className="header">
       <Logo />
       <div className="nav-items">
         <ul className="nav-links">
-          <li className="nav-link mobile">
-            <a href="/" className="hover">
-              Home
-            </a>
+          <li className="nav-link hidden">
+            <a href="/">Home</a>
           </li>
-          <li className="nav-link mobile">
-            <a href="/" className="hover">
-              About
-            </a>
+          <li className="nav-link hidden ">
+            <a href="/">About</a>
           </li>
-          <li className="nav-link mobile">
-            <a href="/" className="hover">
-              Contact
-            </a>
+          <li className="nav-link hidden">
+            <a href="/">Contact</a>
           </li>
           <li className="nav-link">
-            <a href="/">Cart</a>
+            <a href="/">
+              <FaShoppingCart size={28} />
+            </a>
           </li>
-          <li className="nav-link">
-            <a href="/">Log in</a>
-          </li>
+          <button onClick={handleLog} className="log">
+            {userLog ? (
+              <p>
+                Log out <FaUserAlt size={15} />
+              </p>
+            ) : (
+              <p>Log in</p>
+            )}
+          </button>
         </ul>
       </div>
     </div>

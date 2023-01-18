@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
-import restarauntList from "../../config";
+import Carausal from "./Carausal";
+
 import RestuarantCard from "./RestuarantCard";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   //   let searchText = "KFC";
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  const [carausal, setCarausal] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [restuarants, setRestuarants] = useState(restarauntList);
+  const [allrestuarants, setAllRestuarants] = useState([]);
+  const [filteredrestuarants, setFilteredRestuarants] = useState([]);
   const handleSearch = () => {
-    const data = filterData(searchText, restuarants);
-    setRestuarants(data);
+    const data = filterData(searchText, allrestuarants);
+    setFilteredRestuarants(data);
   };
 
   const filterData = (searchText, restuarants) => {
@@ -17,16 +22,39 @@ const Body = () => {
       res.data.name.toLowerCase().includes(searchText.toLowerCase())
     );
   };
+  useEffect(() => {
+    fetchRestuarants();
+  }, []);
+  console.log(allrestuarants);
+  console.log(filteredrestuarants);
+
+  async function fetchRestuarants() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.717111&lng=77.157598&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    console.log(json?.data?.cards[2]?.data?.data?.cards);
+    setAllRestuarants(json?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestuarants(json?.data?.cards[2]?.data?.data?.cards);
+    console.log(json?.data?.cards[1]?.data?.data?.cards);
+    setCarausal(json?.data?.cards[1]?.data?.data?.cards);
+  }
+  console.log("render");
 
   return (
     <>
       <div className="section">
-        <img
-          className="sectionImage"
-          src="https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80"
-          alt="section image"
-        />
-        <div className="search">
+        {carausal.map((car) => (
+          <Carausal {...car.data} key={car.data.bannerId} />
+        ))}
+      </div>
+
+      <h1 className="description tag ">Order Delivery and Take-out</h1>
+      <p className="description feast">Feast like a beast</p>
+
+      <div className="searchbanner">
+        <h3 className="search">{filteredrestuarants.length} RESTUARANTS</h3>
+        <div className="search input">
           <input
             type="text"
             placeholder="Search your favorite restuarants..."
@@ -36,22 +64,45 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
+
           <button className="search-button" onClick={handleSearch}>
             <BiSearch size={20} />
           </button>
         </div>
-        <h1 className="description tag ">Order Delivery and Take-out</h1>
-        <p className="description feast">Feast like a beast</p>
       </div>
-      <div className="restuarant-list">
-        {restuarants.map((restaurant) => {
-          return (
-            <div key={restaurant.data.id}>
-              <RestuarantCard {...restaurant.data} />
-            </div>
-          );
-        })}
-      </div>
+
+      {allrestuarants.length === 0 ? (
+        <div className="shimmerList">
+          {arr.map((a, index) => {
+            return <Shimmer key={index} />;
+          })}
+        </div>
+      ) : filteredrestuarants.length == 0 ? (
+        <div className="restuarant-list notFound">
+          <img
+            src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/empty_404_3x_rgdw87"
+            className="notfoundImage"
+            alt="restuarnt not found"
+          />
+          <p>
+            Uh-oh!!! Looks like the restuarant you are searching for doesn't
+            exist,Please try again...
+          </p>
+          <button className="goback">
+            <a href="/"> GO HOME</a>
+          </button>
+        </div>
+      ) : (
+        <div className="restuarant-list">
+          {filteredrestuarants.map((restaurant) => {
+            return (
+              <div key={restaurant.data.id}>
+                <RestuarantCard {...restaurant.data} />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
