@@ -21,7 +21,7 @@ const RestuarantPage = () => {
     getRestuarantDetails();
   }, []);
 
-  console.log(restaurant.menu.items);
+  console.log(restaurant?.menu.items);
   return !restaurant ? (
     <ShimmerCard />
   ) : (
