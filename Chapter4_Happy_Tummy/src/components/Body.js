@@ -3,11 +3,13 @@ import { BiSearch } from "react-icons/bi";
 import Carausal from "./Carausal";
 
 import RestuarantCard from "./RestuarantCard";
-import Shimmer from "./Shimmer";
+import Shimmer from "./ShimmerCard";
+import Error from "../Pages/Error";
+import ShimmerCard from "./ShimmerCard";
 
 const Body = () => {
   //   let searchText = "KFC";
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
   const [carausal, setCarausal] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [allrestuarants, setAllRestuarants] = useState([]);
@@ -73,25 +75,14 @@ const Body = () => {
 
       {allrestuarants.length === 0 ? (
         <div className="shimmerList">
-          {arr.map((a, index) => {
-            return <Shimmer key={index} />;
-          })}
+          {Array(15)
+            .fill("")
+            .map((a, index) => {
+              return <ShimmerCard key={index} />;
+            })}
         </div>
       ) : filteredrestuarants.length == 0 ? (
-        <div className="restuarant-list notFound">
-          <img
-            src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/empty_404_3x_rgdw87"
-            className="notfoundImage"
-            alt="restuarnt not found"
-          />
-          <p>
-            Uh-oh!!! Looks like the restuarant you are searching for doesn't
-            exist,Please try again...
-          </p>
-          <button className="goback">
-            <a href="/"> GO HOME</a>
-          </button>
-        </div>
+        <Error err="Restuarant" />
       ) : (
         <div className="restuarant-list">
           {filteredrestuarants.map((restaurant) => {

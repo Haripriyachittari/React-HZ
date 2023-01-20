@@ -72,6 +72,10 @@ body{
     text-decoration: none;
         color: brown;
 }
+a{
+    text-decoration: none;
+    color:black
+}
 
 
 
@@ -207,14 +211,17 @@ body{
     margin:10px;
     width:300px;
     padding:10px;
-    height: 330px;
+   
     font-size: 0.8rem;
     border: 1px solid rgb(173, 173, 173);
     border-radius: 5px;
+    overflow: hidden;
+    transition: transform .2s ease-in-out;
     
 }
 .restuarant-card:hover{
-    box-shadow: 0 0 4px 0 black;
+    box-shadow: 0 0 2px 0 black;
+    transform: scale(1.03,1.03);
 }
 .restuarant-image{
     width:100%;
@@ -228,6 +235,9 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+.cuisines{
+   font-size: 0.8rem;
 }
 .rating{
     color: white;
@@ -268,6 +278,12 @@ body{
     border:none;
     border-radius: 5px;
     cursor: pointer;
+}
+.logOut{
+    background-color: green;
+}
+.logIn{
+    background-color: brown;
 }
 .rest-name{
     margin: 5px 0 2px;
