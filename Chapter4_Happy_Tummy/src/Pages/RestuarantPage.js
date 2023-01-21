@@ -5,7 +5,6 @@ import { IMG_CDN_LINK } from "../config";
 
 const RestuarantPage = () => {
   const [restaurant, setRestuarant] = useState();
-  console.log(useState());
 
   const { id } = useParams();
 
@@ -21,7 +20,8 @@ const RestuarantPage = () => {
     getRestuarantDetails();
   }, []);
 
-  console.log(restaurant?.menu.items);
+  // console.log(restaurant?.menu.items);
+
   return !restaurant ? (
     <ShimmerCard />
   ) : (
