@@ -8,6 +8,8 @@ import About from "./Pages/About";
 import Error from "./Pages/Error";
 import Contact from "./Pages/Contact";
 import Restuarant from "./Pages/RestuarantPage";
+import Profile from "./components/Profile";
+import ProfileClass from "./components/ProfileClass";
 
 // console.log(restarauntList.length);
 
@@ -29,8 +31,14 @@ const appRouter = createBrowserRouter([
     errorElement: <Error err="Page" />,
     children: [
       {
-        path: "about",
+        path: "/about",
         element: <About />,
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "contact",

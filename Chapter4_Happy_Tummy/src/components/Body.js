@@ -6,6 +6,12 @@ import RestuarantCard from "./RestuarantCard";
 import Shimmer from "./ShimmerCard";
 import Error from "../Pages/Error";
 import ShimmerCard from "./ShimmerCard";
+import useOnline from "../utils/useOnline";
+const filterData = (searchText, restuarants) => {
+  return restuarants.filter((res) =>
+    res.data.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+};
 
 const Body = () => {
   //   let searchText = "KFC";
@@ -19,11 +25,6 @@ const Body = () => {
     setFilteredRestuarants(data);
   };
 
-  const filterData = (searchText, restuarants) => {
-    return restuarants.filter((res) =>
-      res.data.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-  };
   useEffect(() => {
     fetchRestuarants();
   }, []);
@@ -42,6 +43,9 @@ const Body = () => {
     setCarausal(json?.data?.cards[1]?.data?.data?.cards);
   }
   console.log("render");
+  const stat = useOnline();
+  console.log(stat);
+  if (!stat) return <h1>you are offline</h1>;
 
   return (
     <>
