@@ -4,7 +4,7 @@ const Error = (props) => {
   const error = useRouteError();
   //   console.log(useRouteError().statusText);
   return (
-    <div className="restuarant-list notFound">
+    <div className="">
       <img
         src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/empty_404_3x_rgdw87"
         className="notfoundImage"
@@ -18,7 +18,7 @@ const Error = (props) => {
         Uh-oh!!! Looks like the {props.err} you are looking for doesn't
         exist,Please start afresh...
       </p>
-      <button className="goback">
+      <button className="">
         <a href="/"> GO HOME</a>
       </button>
     </div>

@@ -3,7 +3,7 @@ const carausalImg =
 
 const Carausal = ({ creativeId }) => {
   return (
-    <div>
+    <div className=" w-[200px] h-[200px]">
       <img src={carausalImg + creativeId} alt={creativeId} />
     </div>
   );

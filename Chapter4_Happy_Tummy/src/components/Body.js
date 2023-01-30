@@ -16,7 +16,6 @@ const filterData = (searchText, restuarants) => {
 const Body = () => {
   //   let searchText = "KFC";
 
-  const [carausal, setCarausal] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [allrestuarants, setAllRestuarants] = useState([]);
   const [filteredrestuarants, setFilteredRestuarants] = useState([]);
@@ -40,7 +39,6 @@ const Body = () => {
     setAllRestuarants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestuarants(json?.data?.cards[2]?.data?.data?.cards);
     console.log(json?.data?.cards[1]?.data?.data?.cards);
-    setCarausal(json?.data?.cards[1]?.data?.data?.cards);
   }
   console.log("render");
   const stat = useOnline();
@@ -49,36 +47,27 @@ const Body = () => {
 
   return (
     <>
-      <div className="section">
-        {carausal.map((car) => (
-          <Carausal {...car.data} key={car.data.bannerId} />
-        ))}
-      </div>
+      <div className="flex justify-center items-center p-2 mt-[100px] z-10 ">
+        <input
+          type="text"
+          placeholder="Search your favorite restuarants..."
+          className="border-2 p-2  w-[80%] md:w-[50%] border-orange-400 focus:outline-orange-600"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        />
 
-      <h1 className="description tag ">Order Delivery and Take-out</h1>
-      <p className="description feast">Feast like a beast</p>
-
-      <div className="searchbanner">
-        <h3 className="search">{filteredrestuarants.length} RESTUARANTS</h3>
-        <div className="search input">
-          <input
-            type="text"
-            placeholder="Search your favorite restuarants..."
-            className="search-bar"
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-          />
-
-          <button className="search-button" onClick={handleSearch}>
-            <BiSearch size={20} />
-          </button>
-        </div>
+        <button
+          className="bg-orange-600 text-white p-[10px] relative left-2"
+          onClick={handleSearch}
+        >
+          <BiSearch size={23} />
+        </button>
       </div>
 
       {allrestuarants.length === 0 ? (
-        <div className="shimmerList">
+        <div className="flex flex-wrap gap-x-4 gap-y-6  justify-center my-8 w-full md:w-[80%] mx-auto p-2">
           {Array(15)
             .fill("")
             .map((a, index) => {
@@ -88,7 +77,7 @@ const Body = () => {
       ) : filteredrestuarants.length == 0 ? (
         <Error err="Restuarant" />
       ) : (
-        <div className="restuarant-list">
+        <div className="flex flex-wrap gap-x-4 gap-y-6  justify-center my-8  w-full md:w-[80%] mx-auto p-2">
           {filteredrestuarants.map((restaurant) => {
             return (
               <div key={restaurant.data.id}>

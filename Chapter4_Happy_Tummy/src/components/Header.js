@@ -1,20 +1,7 @@
 import { useState } from "react";
-import { BsFillCartFill } from "react-icons/bs";
 
 import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-const Logo = () => {
-  return (
-    <Link to="/">
-      <img
-        src="https://graphicdesigntucson.com/wp-content/uploads/2015/03/feast_display.jpg"
-        alt="logo"
-        className="logo"
-      />
-    </Link>
-  );
-};
 
 const Header = () => {
   const [userLog, setUserLog] = useState(false);
@@ -23,37 +10,50 @@ const Header = () => {
     setUserLog(!userLog);
   };
   return (
-    <div className="header">
-      <Logo />
-      <div className="nav-items">
-        <ul className="nav-links">
-          <li className="nav-link hidden">
-            <Link to="/">Home</Link>
+    <div className="flex justify-between p-5 text-orange-600 bg-white  font-bold h-[80px] items-center shadow-lg w-full fixed top-0 z-20">
+      <div>
+        <Link to="/" className="text-3xl">
+          <h1 className="font-monoton"> Feast</h1>
+        </Link>
+      </div>
+      <div>
+        <ul className=" hidden md:flex gap-2 ">
+          <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
+            <Link to="/">HOME</Link>
           </li>
-          <li className="nav-link hidden ">
+          <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
             <Link to="/about" href="/">
-              About
-            </Link>
-          </li>
-          <li className="nav-link hidden">
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li className="nav-link">
-            <Link to="/">
-              <FaShoppingCart size={28} />
+              ABOUT US
             </Link>
           </li>
 
-          {userLog ? (
-            <button onClick={handleLog} className="log logOut">
-              Log out <FaUserAlt size={15} />
-            </button>
-          ) : (
-            <button onClick={handleLog} className="log logIn">
-              Log in
-            </button>
-          )}
+          <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
+            <Link to="/contact">CONTACT</Link>
+          </li>
+          <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
+            <Link to="/contact">INSTAMART</Link>
+          </li>
         </ul>
+      </div>
+      <div className="flex gap-4 items-center">
+        <Link to="/">
+          <FaShoppingCart size={28} />
+        </Link>
+        {userLog ? (
+          <button
+            onClick={handleLog}
+            className=" bg-green-600 text-white p-2 w-[90px]  "
+          >
+            LOG OUT
+          </button>
+        ) : (
+          <button
+            onClick={handleLog}
+            className="  p-2  bg-orange-600 w-[90px] text-white "
+          >
+            LOG IN
+          </button>
+        )}
       </div>
     </div>
   );
