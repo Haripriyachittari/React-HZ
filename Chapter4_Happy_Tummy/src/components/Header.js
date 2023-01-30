@@ -31,7 +31,7 @@ const Header = () => {
             <Link to="/contact">CONTACT</Link>
           </li>
           <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
-            <Link to="/contact">INSTAMART</Link>
+            <Link to="/instamart">INSTAMART</Link>
           </li>
         </ul>
       </div>

@@ -10,6 +10,7 @@ import Contact from "./Pages/Contact";
 import Restuarant from "./Pages/RestuarantPage";
 import Profile from "./components/Profile";
 import ProfileClass from "./components/ProfileClass";
+import ShimmerPage from "./components/ShimmerPage";
 
 // console.log(restarauntList.length);
 
@@ -43,6 +44,10 @@ const appRouter = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "/instamart",
+        element: <ShimmerPage />,
       },
       {
         path: "/",

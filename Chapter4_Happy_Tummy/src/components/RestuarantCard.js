@@ -11,7 +11,7 @@ const RestuarantCard = ({
   slaString,
   costForTwoString,
   id,
-  aggregatedDiscountInfo,
+  aggregatedDiscountInfo: { descriptionList },
 }) => {
   return (
     <Link to={`/restuarant/${id}`}>
@@ -47,11 +47,8 @@ const RestuarantCard = ({
             {costForTwoString}
           </h4>
         </div>
-        <div className="  border-t mt-1 p-2 text-yellow-700   font-poppins text-[0.85rem] ">
-          <h3 className="flex">
-            <CiDiscount1 size={25} />
-            <p>{aggregatedDiscountInfo?.descriptionList[0].meta}</p>
-          </h3>
+        <div className="  border-t mt-1 p-2 text-yellow-700    font-poppins text-[0.85rem] ">
+          <p> {descriptionList.map((desc) => desc.meta)}</p>
         </div>
         <div className=" font-bold justify-center items-center  hidden border-t  p-2 text-yellow-700   font-poppins text-[0.9rem] group-hover:flex">
           <h3 className=" text-blue-700">QUICK VIEW</h3>
