@@ -1,4 +1,4 @@
-import { useRouteError } from "react-router-dom";
+import { Link, useRouteError } from "react-router-dom";
 
 const Error = (props) => {
   const error = useRouteError();
@@ -19,7 +19,7 @@ const Error = (props) => {
         exist,Please start afresh...
       </p>
       <button className="">
-        <a href="/"> GO HOME</a>
+        <Link to="/">GO HOME</Link>
       </button>
     </div>
   );

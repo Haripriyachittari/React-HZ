@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
-import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [userLog, setUserLog] = useState(false);
+  const { user, setUser } = useContext(UserContext);
 
   const handleLog = () => {
     setUserLog(!userLog);
   };
+
   return (
     <div className="flex justify-between p-5 text-orange-600 bg-white  font-bold h-[80px] items-center shadow-lg w-full fixed top-0 z-20">
       <div>
@@ -22,23 +25,39 @@ const Header = () => {
             <Link to="/">HOME</Link>
           </li>
           <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
-            <Link to="/about" href="/">
-              ABOUT US
-            </Link>
+            <Link to="/about">ABOUT US</Link>
           </li>
 
           <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
-            <Link to="/contact">CONTACT</Link>
+            <Link to="/instamart">INSTAMART </Link>
           </li>
           <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
-            <Link to="/instamart">INSTAMART</Link>
+            <Link to="/">{user.name}</Link>
+          </li>
+          <li className=" border border-orange-600 p-2 duration-300">
+            <input
+              value={user.name}
+              onChange={(e) =>
+                setUser({
+                  ...user,
+                  name: e.target.value,
+                })
+              }
+            ></input>
           </li>
         </ul>
       </div>
-      <div className="flex gap-4 items-center">
-        <Link to="/">
+      <div className="flex gap-4 items-center group/cart ">
+        <Link to="/cart" className=" cursor-pointer ">
           <FaShoppingCart size={28} />
         </Link>
+        <div className="invisible group-hover/cart:visible  absolute right-6 top-20   w-[250px] bg-white  shadow shadow-orange-500  rounded p-4 ">
+          <h1 className="text-3xl text-gray-500">Cart is empty!!!</h1>
+          <p className="my-2 text-gray-500 font-thin font-raleway text-sm ">
+            Good food is always cooking! Go ahead, order some yummy items from
+            the menu.
+          </p>
+        </div>
         {userLog ? (
           <button
             onClick={handleLog}

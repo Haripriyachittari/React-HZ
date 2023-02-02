@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
-import Carausal from "./Carausal";
-
 import RestuarantCard from "./RestuarantCard";
-import Shimmer from "./ShimmerCard";
 import Error from "../Pages/Error";
 import ShimmerCard from "./ShimmerCard";
 import useOnline from "../utils/useOnline";

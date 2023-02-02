@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ShimmerCard from "../components/ShimmerCard";
 import { IMG_CDN_LINK } from "../config";
 import useRestuarant from "../utils/useRestuarant";
 import { AiFillStar } from "react-icons/ai";
 import { FaRupeeSign } from "react-icons/fa";
 import { BiFoodTag } from "react-icons/bi";
+import ShimmerPage from "../components/ShimmerPage";
 
 const RestuarantPage = () => {
   const [offer, setOffer] = useState();
@@ -19,7 +19,7 @@ const RestuarantPage = () => {
   }, []);
 
   return !restaurant ? (
-    <ShimmerCard />
+    <ShimmerPage />
   ) : (
     <div className="">
       <div className="mt-[78px] bg-orange-400  p-4 flex flex-col md:flex-row justify-between w-full text-white  ">
@@ -36,8 +36,14 @@ const RestuarantPage = () => {
             <h1>{restaurant?.cuisines.join(",")}</h1>
             <div className="flex gap-6 mt-10 ">
               <div>
-                <div className="flex items-center text-xl">
-                  <AiFillStar />
+                <div
+                  className={
+                    restaurant?.avgRating > 3
+                      ? "flex justify-center rounded items-center text-xl bg-green-400"
+                      : "flex justify-center rounded items-center text-xl bg-red-400"
+                  }
+                >
+                  <AiFillStar className="text-yellow-300" />
                   <h1 className="font-bold">{restaurant?.avgRating}</h1>
                 </div>
 
@@ -60,7 +66,7 @@ const RestuarantPage = () => {
       </div>
 
       <div>
-        <div className="my-4 ml-[280px] ">
+        <div className="my-4 md:ml-[280px] p-4 ">
           <h1 className="font-bold text-orange-600">RECOMMENDED</h1>
           <p className="font-bold text-slate-600">
             {Object.values(restaurant?.menu?.items).length} ITEMS
@@ -69,7 +75,7 @@ const RestuarantPage = () => {
         {Object.values(restaurant?.menu?.items).map((item) => (
           <div
             key={item.id}
-            className="flex  mx-auto w-[100%] md:w-[60%] justify-between  p-2  border-b-2 hover:shadow-lg hover:bg-gray-100 "
+            className="flex  mx-auto w-[100%] md:w-[60%] justify-between  p-4  border-b-2 hover:shadow-lg hover:bg-gray-100 "
           >
             <div className="">
               <p className="font-bold font-monteserrat">
@@ -85,7 +91,12 @@ const RestuarantPage = () => {
 
                 {item.name}
               </p>
-              <p className="font-monteserrat">₹{item.price / 100}</p>
+              {item?.defaultPrice ? (
+                <p className="font-monteserrat">₹{item?.defaultPrice / 100}</p>
+              ) : (
+                <p className="font-monteserrat">₹{item?.price / 100}</p>
+              )}
+
               <p className="mt-5 font-poppins text-slate-500 text-sm w-[80%]">
                 {item.description}
               </p>
