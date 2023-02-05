@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { BiSearch } from "react-icons/bi";
 import RestuarantCard from "./RestuarantCard";
 import Error from "../Pages/Error";
 import ShimmerCard from "./ShimmerCard";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
+
 const filterData = (searchText, restuarants) => {
   return restuarants.filter((res) =>
     res.data.name.toLowerCase().includes(searchText.toLowerCase())
@@ -12,6 +14,7 @@ const filterData = (searchText, restuarants) => {
 
 const Body = () => {
   //   let searchText = "KFC";
+  const { toggle } = useContext(UserContext);
 
   const [searchText, setSearchText] = useState("");
   const [allrestuarants, setAllRestuarants] = useState([]);
@@ -43,7 +46,7 @@ const Body = () => {
   if (!stat) return <h1>you are offline</h1>;
 
   return (
-    <>
+    <div className={toggle ? "bg-black" : "bg-white"}>
       <div className="flex justify-center items-center p-2 mt-[100px] z-10 ">
         <input
           type="text"
@@ -84,7 +87,7 @@ const Body = () => {
           })}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

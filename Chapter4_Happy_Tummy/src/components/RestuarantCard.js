@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { IMG_CDN_LINK } from "../config";
 import { AiFillStar } from "react-icons/ai";
+
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 
@@ -14,16 +15,36 @@ const RestuarantCard = ({
   id,
   aggregatedDiscountInfo: { descriptionList },
 }) => {
-  const { user } = useContext(UserContext);
+  const { toggle } = useContext(UserContext);
   return (
     <Link to={`/restuarant/${id}`}>
-      <div className="  md:w-[300px]  h[420px] md:h-[380px] p-2 hover:shadow-md duration-300 overflow-hidden  group ">
+      <div
+        className={
+          toggle
+            ? "  md:w-[300px]  h[420px] md:h-[380px] p-2 hover:shadow-md duration-300 overflow-hidden  group bg-gray-900 "
+            : "  md:w-[300px]  h[420px] md:h-[380px] p-2 hover:shadow-md duration-300 overflow-hidden  group bg-white "
+        }
+      >
         <img className="" src={IMG_CDN_LINK + cloudinaryImageId} alt="swiggy" />
         <div className="my-2">
-          <h3 className="font-bold font-poppins">{name}</h3>
-          <p className="text-sm font-raleway">{cuisines.join(",")}</p>
-          <p>{user.name}</p>
-          <p>{user.email}</p>
+          <h3
+            className={
+              toggle
+                ? "text-white font-bold font-poppins"
+                : "text-black font-bold font-poppins"
+            }
+          >
+            {name}
+          </h3>
+          <p
+            className={
+              toggle
+                ? "text-white text-sm font-raleway"
+                : "text-black text-sm font-raleway"
+            }
+          >
+            {cuisines.join(",")}
+          </p>
         </div>
         <div className="flex justify-between items-center font-monteserrat">
           {avgRating.includes("--") ? (

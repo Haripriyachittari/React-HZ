@@ -3,17 +3,25 @@ import { useState, useContext } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { MdDarkMode } from "react-icons/md";
+import { CiLight } from "react-icons/ci";
 
 const Header = () => {
   const [userLog, setUserLog] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const { toggle, toggleFunction } = useContext(UserContext);
 
   const handleLog = () => {
     setUserLog(!userLog);
   };
 
   return (
-    <div className="flex justify-between p-5 text-orange-600 bg-white  font-bold h-[80px] items-center shadow-lg w-full fixed top-0 z-20">
+    <div
+      className={
+        toggle
+          ? "flex justify-between p-5 text-orange-600 bg-black  font-bold h-[80px] items-center shadow-lg w-full fixed top-0 z-20"
+          : "flex justify-between p-5 text-orange-600 bg-white  font-bold h-[80px] items-center shadow-lg w-full fixed top-0 z-20"
+      }
+    >
       <div>
         <Link to="/" className="text-3xl">
           <h1 className="font-monoton"> Feast</h1>
@@ -27,23 +35,14 @@ const Header = () => {
           <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
             <Link to="/about">ABOUT US</Link>
           </li>
-
           <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
             <Link to="/instamart">INSTAMART </Link>
           </li>
-          <li className="hover:bg-orange-600 hover:text-white p-2 duration-300">
-            <Link to="/">{user.name}</Link>
-          </li>
-          <li className=" border border-orange-600 p-2 duration-300">
-            <input
-              value={user.name}
-              onChange={(e) =>
-                setUser({
-                  ...user,
-                  name: e.target.value,
-                })
-              }
-            ></input>
+
+          <li className=" p-2 duration-300 rounded">
+            <button onClick={() => toggleFunction()}>
+              {toggle ? <CiLight size={25} /> : <MdDarkMode size={25} />}
+            </button>
           </li>
         </ul>
       </div>

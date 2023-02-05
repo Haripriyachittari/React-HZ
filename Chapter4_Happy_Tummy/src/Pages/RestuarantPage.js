@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_LINK } from "../config";
 import useRestuarant from "../utils/useRestuarant";
@@ -6,8 +6,10 @@ import { AiFillStar } from "react-icons/ai";
 import { FaRupeeSign } from "react-icons/fa";
 import { BiFoodTag } from "react-icons/bi";
 import ShimmerPage from "../components/ShimmerPage";
+import UserContext from "../utils/UserContext";
 
 const RestuarantPage = () => {
+  const { toggle } = useContext(UserContext);
   const [offer, setOffer] = useState();
   const { id } = useParams();
   const restaurant = useRestuarant(id);
@@ -65,7 +67,7 @@ const RestuarantPage = () => {
         </div>
       </div>
 
-      <div>
+      <div className={toggle ? "bg-black" : "bg-white"}>
         <div className="my-4 md:ml-[280px] p-4 ">
           <h1 className="font-bold text-orange-600">RECOMMENDED</h1>
           <p className="font-bold text-slate-600">
@@ -78,7 +80,13 @@ const RestuarantPage = () => {
             className="flex  mx-auto w-[100%] md:w-[60%] justify-between  p-4  border-b-2 hover:shadow-lg hover:bg-gray-100 "
           >
             <div className="">
-              <p className="font-bold font-monteserrat">
+              <p
+                className={
+                  toggle
+                    ? "text-white font-bold font-monteserrat"
+                    : "text-black font-bold font-monteserrat"
+                }
+              >
                 <span
                   className={
                     item?.attributes?.vegClassifier == "VEG"
@@ -92,9 +100,25 @@ const RestuarantPage = () => {
                 {item.name}
               </p>
               {item?.defaultPrice ? (
-                <p className="font-monteserrat">₹{item?.defaultPrice / 100}</p>
+                <p
+                  className={
+                    toggle
+                      ? "text-white font-bold font-monteserrat"
+                      : "text-black font-bold font-monteserrat"
+                  }
+                >
+                  ₹{item?.defaultPrice / 100}
+                </p>
               ) : (
-                <p className="font-monteserrat">₹{item?.price / 100}</p>
+                <p
+                  className={
+                    toggle
+                      ? "text-white font-bold font-monteserrat hover:text-black"
+                      : "text-black font-bold font-monteserrat"
+                  }
+                >
+                  ₹{item?.price / 100}
+                </p>
               )}
 
               <p className="mt-5 font-poppins text-slate-500 text-sm w-[80%]">
