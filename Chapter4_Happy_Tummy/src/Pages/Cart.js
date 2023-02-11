@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IMG_CDN_LINK } from "../config";
-import { removeItem } from "../utils/CartSlice";
+import { removeItem, addItem, clearCart } from "../utils/CartSlice";
 
 const Cart = () => {
   const cartitems = useSelector((store) => store.cart.items);
@@ -10,14 +10,34 @@ const Cart = () => {
   const handleRemoveItem = (item) => {
     dispatch(removeItem(item));
   };
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+  const totalAmount = (cartitems) => {
+    const sum = cartitems.reduce((acc, item) => {
+      acc += item.price;
+    }, 0);
+    console.log(sum);
+  };
 
   return (
-    <div className=" flex flex-col justify-center items-center w-screen h-screen mt-[100px] ">
+    <div className="   h-[100vh] mt-[100px] ">
       {cartitems.length != 0 ? (
         <div className=" flex flex-col justify-center items-center  ">
           <h1 className="font-bold text-3xl text-orange-600 mb-10">
-            Cart items
+            Cart items - {cartitems.length} items
           </h1>
+          <button
+            onClick={() => handleClearCart()}
+            className=" w-[100px] p-1  bg-orange-600 text-white font-bold rounded hover:border  hover:bg-white hover:text-orange-600 hover:border-orange-600"
+          >
+            Clear Cart
+          </button>
+          <div>total Amount={totalAmount(cartitems)}</div>
+
           {cartitems.map((cartItem, index) => {
             return (
               <div
@@ -44,7 +64,10 @@ const Cart = () => {
                       className="w-20"
                     />
                   )}
-                  <button className=" w-[100px] p-1 bg-green-600 text-white font-bold rounded border">
+                  <button
+                    onClick={() => handleAddItem(cartItem)}
+                    className=" w-[100px] p-1 bg-green-600 text-white font-bold rounded border"
+                  >
                     Add
                   </button>
                   <button
