@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const cartItems = useSelector((store) => store.cart.items);
   const [userLog, setUserLog] = useState(false);
   const { toggle, toggleFunction } = useContext(UserContext);
 
@@ -50,12 +52,8 @@ const Header = () => {
         <Link to="/cart" className=" cursor-pointer ">
           <FaShoppingCart size={28} />
         </Link>
-        <div className="invisible group-hover/cart:visible  absolute right-6 top-20   w-[250px] bg-white  shadow shadow-orange-500  rounded p-4 ">
-          <h1 className="text-3xl text-gray-500">Cart is empty!!!</h1>
-          <p className="my-2 text-gray-500 font-thin font-raleway text-sm ">
-            Good food is always cooking! Go ahead, order some yummy items from
-            the menu.
-          </p>
+        <div className="  absolute right-28 top-1 w-[20px] bg-orange-600   rounded-full">
+          <span className="text-white font-bold p-1">{cartItems.length}</span>
         </div>
         {userLog ? (
           <button

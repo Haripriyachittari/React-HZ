@@ -7,18 +7,22 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Error from "./Pages/Error";
 import Restuarant from "./Pages/RestuarantPage";
 import Cart from "./Pages/Cart";
-import UserContext, { UserContextProvider } from "./utils/UserContext";
+import { UserContextProvider } from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 const Instamart = lazy(() => import("./components/Instamart"));
 const About = lazy(() => import("./Pages/About"));
 
 const App = () => {
   return (
     <div>
-      <UserContextProvider>
-        <Header />
-        <Outlet />
-        <Footer />
-      </UserContextProvider>
+      <Provider store={store}>
+        <UserContextProvider>
+          <Header />
+          <Outlet />
+          <Footer />
+        </UserContextProvider>
+      </Provider>
     </div>
   );
 };

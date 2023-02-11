@@ -7,18 +7,23 @@ import { FaRupeeSign } from "react-icons/fa";
 import { BiFoodTag } from "react-icons/bi";
 import ShimmerPage from "../components/ShimmerPage";
 import UserContext from "../utils/UserContext";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/CartSlice";
 
 const RestuarantPage = () => {
   const { toggle } = useContext(UserContext);
   const [offer, setOffer] = useState();
   const { id } = useParams();
   const restaurant = useRestuarant(id);
-
-  console.log(restaurant);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setOffer(restaurant?.offerMeta);
   }, []);
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
 
   return !restaurant ? (
     <ShimmerPage />
@@ -132,7 +137,10 @@ const RestuarantPage = () => {
                   className=" w-20 md:w-40 rounded"
                 />
               )}
-              <button className="border-2 relative mt-2  mx-auto  py-1 px-6 text-green-600 font-bold hover:bg-green-600 hover:text-white">
+              <button
+                onClick={() => handleAddItem(item)}
+                className="border-2 relative mt-2  mx-auto  py-1 px-6 text-green-600 font-bold hover:bg-green-600 hover:text-white"
+              >
                 ADD+
               </button>
             </div>
