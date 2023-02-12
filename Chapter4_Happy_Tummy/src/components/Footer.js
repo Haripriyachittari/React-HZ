@@ -5,7 +5,9 @@ const Footer = () => {
     <div className=" bg-orange-400 text-white p-8 ">
       <div className="   md:flex justify-between">
         <ul className="">
-          <li className="">COMPANY</li>
+          <li className="" data-testid="company">
+            COMPANY
+          </li>
           <li>About</li>
           <li>Contact</li>
           <li>Team</li>

@@ -2,7 +2,7 @@ import { Link, useRouteError } from "react-router-dom";
 
 const Error = (props) => {
   const error = useRouteError();
-  //   console.log(useRouteError().statusText);
+  console.log(useRouteError().statusText);
   return (
     <div className="">
       <img

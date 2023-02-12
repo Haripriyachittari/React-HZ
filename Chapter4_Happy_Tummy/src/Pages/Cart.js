@@ -5,7 +5,7 @@ import { removeItem, addItem, clearCart } from "../utils/CartSlice";
 
 const Cart = () => {
   const cartitems = useSelector((store) => store.cart.items);
-  console.log(cartitems.length);
+
   const dispatch = useDispatch();
   const handleRemoveItem = (item) => {
     dispatch(removeItem(item));
@@ -17,14 +17,14 @@ const Cart = () => {
     dispatch(clearCart());
   };
   const totalAmount = (cartitems) => {
-    const sum = cartitems.reduce((acc, item) => {
-      acc += item.price;
+    let sum = cartitems.reduce((acc, item) => {
+      acc = acc + item.price / 100;
     }, 0);
-    console.log(sum);
+    return sum;
   };
 
   return (
-    <div className="   h-[100vh] mt-[100px] ">
+    <div className="   h-full mt-[100px] ">
       {cartitems.length != 0 ? (
         <div className=" flex flex-col justify-center items-center  ">
           <h1 className="font-bold text-3xl text-orange-600 mb-10">
